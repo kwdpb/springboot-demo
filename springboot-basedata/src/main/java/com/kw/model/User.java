@@ -1,6 +1,9 @@
 package com.kw.model;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.io.Serializable;
+import java.util.Date;
 
 public class User implements  Serializable{
         /**
@@ -18,7 +21,27 @@ public class User implements  Serializable{
 
         private String email;
 
-        public int getUserId() {
+        private Date createTime;
+
+        private String online;
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getOnline() {
+        return online;
+    }
+
+    public void setOnline(String online) {
+        this.online = online;
+    }
+
+    public int getUserId() {
             return userId;
         }
 

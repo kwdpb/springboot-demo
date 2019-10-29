@@ -1,10 +1,12 @@
-package com.kw.util;
+package com.kw.config;
 
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.lang.annotation.Target;
 import java.lang.reflect.Method;
@@ -28,4 +30,6 @@ public class RedisConfig extends CachingConfigurerSupport {
             }
         };
     }
+
+    
 }

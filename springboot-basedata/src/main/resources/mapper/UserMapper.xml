@@ -8,6 +8,8 @@
         <result column="password" jdbcType="VARCHAR" property="password" />
         <result column="tel" jdbcType="VARCHAR" property="tel" />
         <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="create_time" jdbcType="DATE" property="createTime" />
+        <result column="online" jdbcType="VARCHAR" property="online" />
     </resultMap>
     <!--   <sql id="Example_Where_Clause">
         <where>
@@ -134,6 +136,18 @@
             <if test="password != null">
                 password,
             </if>
+            <if test="tel !=null">
+                tel,
+            </if>
+            <if test="email !=null">
+                email,
+            </if>
+            <if test="create_time !=null">
+                create_time,
+            </if>
+            <if test="online !=null">
+                online,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="username != null">
@@ -142,12 +156,42 @@
             <if test="password != null">
                 #{password,jdbcType=VARCHAR},
             </if>
+            <if test="tel != null">
+                #{tel,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=DATE},
+            </if>
+            <if test="online != null">
+                #{online,jdbcType=VARCHAR},
+            </if>
         </trim>
     </insert>
+
 
     <select id="findById" parameterType="Integer" resultMap="BaseResultMap">
   		select *
   		from sys_user
   		where user_id=#{userId,jdbcType=VARCHAR}
-  </select>
+    </select>
+
+    <update  id="update" parameterType="User">
+        update sys_user set
+        username=#{username,jdbcType=VARCHAR},
+        password=#{password,jdbcType=VARCHAR},
+        tel=#{tel,jdbcType=VARCHAR},
+        email=#{email,jdbcType=VARCHAR},
+        create_time=#{createTime,jdbcType=DATE},
+        online=#{online,jdbcType=VARCHAR},
+        where user_id=#{userId,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="delete" parameterType="Integer">
+        delete
+        from sys_user
+        where user_id=#{userId,jdbcType=VARCHAR}
+    </delete>
 </mapper>
